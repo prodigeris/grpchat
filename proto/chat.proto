@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "github.com/prodigeris/grpchat/proto";
+
+message Person {
+  int32 id = 1;
+  string name = 2;
+}
+
+message MessageRequest {
+  Person from = 1;
+  string message = 2;
+}
+message MessageResponse {
+  Person from = 1;
+  string message = 2;
+}
+
+service Chat {
+  rpc Stream(stream MessageRequest) returns (stream MessageResponse);
+}
